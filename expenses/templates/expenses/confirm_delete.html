@@ -1,0 +1,21 @@
+{% extends 'expenses/base.html' %}
+{% block title %}Confirm Delete{% endblock %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3>Confirm Deletion</h3>
+                </div>
+                <div class="card-body">
+                    <p>Are you sure you want to delete the expense: <strong>"{{ expense.title }}"</strong> (₹{{ expense.amount }} on {{ expense.date }})?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
